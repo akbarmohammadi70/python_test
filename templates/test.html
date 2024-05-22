@@ -8,14 +8,17 @@
     <title> documents</title>
 </head>
 <body>
-    <p> Testing Page </p>
-    <p>test: </p>
-    {% comment %} {% for post in totalposts %}
-       {% comment %} <p> {{post.content|snippet:5}} </p> {% endcomment %}
-        {% comment %} <p>{{post.title}}</p>
-    {%endfor%}  {% endcomment %}
-    {% popularposts %}
+  
 
+    {% comment %} {% popularposts %} {% endcomment %}
+    <form action="{% url 'website:test' %}" method="post" >
+        {% csrf_token %}
+        {% comment %} <label>name:</label>
+        <input name="name" type="text"><br> {% endcomment %}
+        {{ form.as_p }}
+        <button type='submit'>submit</button>
+
+    </form>
 
 </body>
 </html>

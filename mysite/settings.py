@@ -16,6 +16,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -31,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,8 +41,34 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website.apps.WebsiteConfig',
+    'django.contrib.humanize',
+    'django.contrib.sitemaps',
+    'django.contrib.sites',
+    'robots',
+    'taggit',
+    'django_summernote',
+    "debug_toolbar",
+    'django_extensions',
     'blog',
+    'accounts',
+    # 'captcha',
 ]
+
+
+
+ROBOTS_USE_HOST = False
+ROBOTS_USE_SITEMAP = False
+
+# Summernoteconfigs
+SUMMERNOTE_THEME = 'bs4' 
+
+
+SITE_ID = 2
+
+# Captcha Admin settings
+# MULTI_CAPTCHA_ADMIN = {
+#     'engine': 'simple-captcha',
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,6 +78,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+
+
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -127,7 +159,12 @@ STATICFILES_DIRS = [
     BASE_DIR / "statics",
     
 ]
-
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

@@ -104,7 +104,7 @@
           <div class="col-lg-3 col-md-3 meta-details">
             <ul class="tags">
               {% for cat in post.category.all %}
-                <li><a href="{%url 'blog:category' cat_name=cat.name%}"{{ cat.name }}</a> {% if not forloop.last %}, {% endif %}</li>
+                <li><a href="#" </a> {% if not forloop.last %}, {% endif %}</li>
 
               {% endfor %}
             </ul>
@@ -120,7 +120,7 @@
                 <a href="#">{{ post.counted_views }} Views</a> <span class="lnr lnr-eye"></span>
               </p>
               <p class="comments col-lg-12 col-md-12 col-6">
-                <a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span>
+                <a href="#">{% comments_count post.id %} Commetns</a> <span class="lnr lnr-bubble"></span>
               </p>
             </div>
           </div>

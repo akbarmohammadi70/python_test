@@ -18,19 +18,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fxbrbb!tw71gkpsp@3jds5agy-bz4!k#y-ewn^8e%=jd#7s4%#'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
+CSRF_COOKIE_SECURE = True
 
 INSTALLED_APPS = [
     # 'multi_captcha_admin',
@@ -63,7 +55,6 @@ ROBOTS_USE_SITEMAP = False
 SUMMERNOTE_THEME = 'bs4' 
 
 
-SITE_ID = 2
 
 # Captcha Admin settings
 # MULTI_CAPTCHA_ADMIN = {
@@ -104,15 +95,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -150,22 +133,58 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "statics",
-    
-]
+
+
+
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",
     # ...
 ]
-X_FRAME_OPTIONS = 'SAMEORIGIN'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+###############!SECTION
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-fxbrbb!tw71gkpsp@3jds5agy-bz4!k#y-ewn^8e%=jd#7s4%#'
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
+
+SITE_ID = 1
+
+# Database
+# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+
+
+MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_ROOT = BASE_DIR / 'static'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "statics",
+    
+]

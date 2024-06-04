@@ -90,4 +90,8 @@ def newsletter_view(request):
 ########
 
 
+# def coming_soon(request):
+#     return render(request, 'coming_soon.html')
+
+
         

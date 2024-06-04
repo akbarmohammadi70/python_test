@@ -4,13 +4,13 @@ from django.utils import timezone
 
 def blog_view(request):
     now = timezone.now()
-    posts = Post.objects.filter(published_date__lte=now)
+    posts = Post.objects.filter(published_date__lte=now, status=1)
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
 
 def blog_single(request, pid):
     now = timezone.now()
-    posts = Post.objects.filter(published_date__lte=now)
+    posts = Post.objects.filter(published_date__lte=now, status=1)
     post = get_object_or_404(posts, pk=pid)
     post.counted_view += 1
     post.save()

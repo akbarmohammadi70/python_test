@@ -30,7 +30,7 @@
         <div class="single-post row">
           <div class="col-lg-12">
             <div class="feature-img">
-              <img class="img-fluid" src="{% static 'img/blog/feature-img1.jpg' %}" alt="" />
+              <img class="img-fluid" src="{{post.image.url}}" alt="" />
             </div>
           </div>
           <div class="col-lg-3 col-md-3 meta-details">
@@ -83,7 +83,7 @@
             <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
               <div class="thumb">
                 <a href="#"
-                  ><img class="img-fluid" src="{% static 'img/blog/prev.jpg' %}" alt=""
+                  ><img class="img-fluid" src="{{prev_post.image.url}}" alt="{{ prev_post.title }}"
                 /></a>
               </div>
               <div class="arrow">
@@ -110,7 +110,7 @@
               </div>
               <div class="thumb">
                 <a href="#"
-                  ><img class="img-fluid" src="{% static 'img/blog/next.jpg' %}" alt=""
+                  ><img class="img-fluid" src="{{next_post.image.url}}" alt="{{next_post.title}}"
                 /></a>
               </div>
             </div>

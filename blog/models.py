@@ -1,6 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+def excerpt(text, num_words):
+    words = text.split()
+    if len(words) <= num_words:
+        return ' '.join(words)
+    return ' '.join(words[:num_words]) + '...'
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -24,6 +29,7 @@ class Post(models.Model):
         verbose_name_plural = 'پست ها'    
     def __str__(self):
         return "{} - {}".format(self.title,self.id)
-    def snippets(self):
-        return self.content[:100] + '...'
 
+
+    def snippets(self):
+        return excerpt(self.content, 10) 

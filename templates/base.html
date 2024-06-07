@@ -36,7 +36,15 @@
     <link rel="stylesheet" href="{% static 'css/animate.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" />
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/scripts.js' %}"></script>
+
   </head>
+
+
+
   <body>
     <header id="header">
       <div class="header-top">
@@ -95,6 +103,21 @@
     </header>
     <!-- #header -->
 
+    <div id="popup-notification" style="display: none;">
+      <p id="popup-message"></p>
+      <button onclick="closePopup()">Close</button>
+  </div>
+  {% if messages %}
+      <script>
+          var messages = "";
+          {% for message in messages %}
+              messages += "{{ message }}<br>";
+          {% endfor %}
+          document.getElementById('popup-message').innerHTML = messages;
+          document.getElementById('popup-notification').style.display = 'block';
+      </script>
+  {% endif %}
+
     {% block content %} {% endblock %}ß
 
     <!-- start footer Area -->
@@ -142,23 +165,23 @@
                 For business professionals caught between high OEM price and
                 mediocre print and graphic output.
               </p>
-              <div id="mc_embed_signup">
+              <div>
                 <form
-                  target="_blank"
-                  action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                  method="get"
-                  class="subscription relative"
+                  action="{% url 'website:newsletter' %}"
+                  method="post"
+                  class="subscription relative" 
                 >
+                {% csrf_token %}
                   <div class="input-group d-flex flex-row">
                     <input
-                      name="EMAIL"
+                      name="email"
                       placeholder="Email Address"
                       onfocus="this.placeholder = ''"
                       onblur="this.placeholder = 'Email Address '"
                       required=""
                       type="email"
                     />
-                    <button class="btn bb-btn">
+                    <button class="btn bb-btn" type="submit">
                       <span class="lnr lnr-location"></span>
                     </button>
                   </div>

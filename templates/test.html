@@ -14,7 +14,22 @@
        {% comment %} <p> {{post.content|snippet:5}} </p> {% endcomment %}
         {% comment %} <p>{{post.title}}</p>
     {%endfor%}  {% endcomment %}
-    {% popularposts %}
+    {% comment %} {% popularposts %} {% endcomment %}
+
+    <form action="{% url 'website:test'%}" method="post">
+        {% csrf_token %} 
+
+        {% comment %} <label> name: </label>
+        <input name="name" type="text"><br> {% endcomment %}
+        {% comment %} <label> email: </label>
+        <input name="email" type="text"><br>
+        <label> subject: </label>
+        <input name="subject" type="text"><br>
+        <label> message: </label>
+        <input name="message" type="text"><br> {% endcomment %}
+        {{form.as_p}}
+        <button type="submit"> submit: </button>
+    </form>
 
 
 </body>

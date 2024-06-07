@@ -8,14 +8,14 @@
   <div class="details">
     <div class="tags">
       <ul>
-        {% for tag in post.tags.all %}
+        {% for tag in post.category.all %}
         <li>
-          <a href="#">{{ tag.name }}</a>
+          <a href="{%url 'blog:single' pid=tag.id%}">{{ tag.name }}</a>
         </li>
         {% endfor %}
       </ul>
     </div>
-    <a href="{{ post.get_absolute_url }}"><h4 class="title">{{ post.title }}</h4></a>
+    <a href="{% url 'blog:single' pid=post.id %}"><h4 class="title">{{ post.title }}</h4></a>
     <p>
       {{ post.content|truncatechars:10 }}
     </p>

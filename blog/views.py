@@ -1,8 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from blog.models import Post, Comments
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from blog.forms import CommentForm
 from django.contrib import messages
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+# @login_required
 def blog_view(request, **kwargs):
     posts = Post.objects.filter(status=1, published_date__isnull=False).order_by('-published_date')
     print(kwargs)
@@ -36,15 +39,17 @@ def blog_single(request, pid):
             messages.add_message(request,messages.ERROR, 'Your message has not been  sent successfully.')
     posts = Post.objects.filter(status=1, published_date__isnull=False).order_by('-published_date')
     post = get_object_or_404(posts, pk=pid)
-    comments = Comments.objects.filter(post=post.id, approved=True).order_by('-created_date')
-    post.counted_view += 1
-    post.save()
-    prev_post = Post.objects.filter(published_date__lt=post.published_date, status=1).order_by('-published_date').first()
-    next_post = Post.objects.filter(published_date__gt=post.published_date, status=1).order_by('published_date').first()
-    form = CommentForm()
-    context = {'post': post, 'prev_post': prev_post, 'next_post': next_post, 'comments': comments, 'form': form}
-    return render(request, 'blog/blog-single.html', context)
-
+    if not post.login_require == True: 
+        comments = Comments.objects.filter(post=post.id, approved=True).order_by('-created_date')
+        post.counted_view += 1
+        post.save()
+        prev_post = Post.objects.filter(published_date__lt=post.published_date, status=1).order_by('-published_date').first()
+        next_post = Post.objects.filter(published_date__gt=post.published_date, status=1).order_by('published_date').first()
+        form = CommentForm()
+        context = {'post': post, 'prev_post': prev_post, 'next_post': next_post, 'comments': comments, 'form': form}
+        return render(request, 'blog/blog-single.html', context)
+    else:
+        return HttpResponseRedirect(reverse('accounts:login'))
 
 # def test(request, name, family_name, age):
 def test(request):

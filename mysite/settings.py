@@ -215,5 +215,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'akbar.mohammadi70@yahoo.com'
-EMAIL_HOST_PASSWORD = 'sagcthowhifmdehd'
+EMAIL_HOST_PASSWORD = '<your App Password>'
 DEFAULT_FROM_EMAIL = 'akbar.mohammadi70@yahoo.com'

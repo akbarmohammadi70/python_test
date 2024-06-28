@@ -4,6 +4,10 @@ from .forms import EmailAuthenticationForm, CustomUserCreationForm
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+from django.contrib.auth.views import PasswordResetView
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordResetConfirmView
+
 User = get_user_model()
 
 def login_view(request):
@@ -53,3 +57,11 @@ def logout_view(request):
     logout(request)
     return redirect('/')
 
+class CustomPasswordResetView(PasswordResetView):
+    template_name = 'accounts/password_reset_form.html'
+    email_template_name = 'accounts/password_reset_email.html'
+    success_url = reverse_lazy('accounts:password_reset_done')
+
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'accounts/password_reset_confirm.html'
+    success_url = reverse_lazy('accounts:password_reset_complete')

@@ -199,12 +199,21 @@ SUMMERNOTE_CONFIG = {
     }
 }
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# # EMAIL_FILE_PATH = BASE_DIR / 'emails'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'asgarasgaroladi@gmail.com'
+# EMAIL_HOST_PASSWORD = 'P@ssw0rdAsgar13800'
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_FILE_PATH = BASE_DIR / 'emails'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.mail.yahoo.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-
-
+# EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'akbar.mohammadi70@yahoo.com'
+EMAIL_HOST_PASSWORD = 'sagcthowhifmdehd'
+DEFAULT_FROM_EMAIL = 'akbar.mohammadi70@yahoo.com'
